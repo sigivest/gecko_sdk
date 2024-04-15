@@ -24,14 +24,13 @@
    "angleFilteringWeight":0.6,
    "angleCorrectionTimeout":5,
    "angleCorrectionDelay":3,
-   "cteMode":"SILABS",
+   "cteMode":"CONN_LESS",
    "cteSamplingInterval":3,
    "cteLength":20,
    "slotDuration":1,
-   "reportMode":"ANGLE",
+   "reportMode":"ANGLE_AND_IQ_REPORT",
    "allowList":[
-      "ble-pd-AAAAAAAAAAAA",
-      "ble-pd-BBBBBBBBBBBB"
+      
    ],
    "azimuthMask":[
       {

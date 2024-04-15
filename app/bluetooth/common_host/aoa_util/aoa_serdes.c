@@ -112,6 +112,59 @@ sl_status_t aoa_deserialize_iq_report(char *str, aoa_iq_report_t *iq_report)
 }
 
 /***************************************************************************//**
+ * Serialize angle and iq data structure into string.
+ ******************************************************************************/
+sl_status_t aoa_serialize_angle_and_iq(aoa_angle_t *angle, aoa_iq_report_t *iq_report, char **str)
+{
+  if ((iq_report == NULL) || (str == NULL)) {
+    return SL_STATUS_NULL_POINTER;
+  }
+
+  if ((angle == NULL) || (str == NULL)) {
+    return SL_STATUS_NULL_POINTER;
+  }
+  cJSON_bool b;
+  cJSON *obj = NULL;
+  cJSON *root = cJSON_CreateObject();
+  cJSON *samples = cJSON_CreateArray();
+  CHECK_NULL_RETURN(samples, SL_STATUS_FAIL);
+  obj = cJSON_AddNumberToObject(root, "channel", (int)iq_report->channel);
+  CHECK_NULL_RETURN(obj, SL_STATUS_FAIL);
+  obj = cJSON_AddNumberToObject(root, "rssi", (int)iq_report->rssi);
+  CHECK_NULL_RETURN(obj, SL_STATUS_FAIL);
+  obj = cJSON_AddNumberToObject(root, "sequence", (int)iq_report->event_counter);
+  CHECK_NULL_RETURN(obj, SL_STATUS_FAIL);
+  for (int i = 0; i < iq_report->length; i++) {
+    b = cJSON_AddItemToArray(samples, cJSON_CreateNumber(iq_report->samples[i]));
+    if (!b) {
+      return SL_STATUS_FAIL;
+    }
+  }
+  b = cJSON_AddItemToObject(root, "samples", samples);
+  if (!b) {
+    return SL_STATUS_FAIL;
+  }
+  CHECK_NULL_RETURN(root, SL_STATUS_FAIL);
+  obj = cJSON_AddNumberToObject(root, "azimuth", (double)angle->azimuth);
+  CHECK_NULL_RETURN(obj, SL_STATUS_FAIL);
+  obj = cJSON_AddNumberToObject(root, "azimuth_stdev", (double)angle->azimuth_stdev);
+  CHECK_NULL_RETURN(obj, SL_STATUS_FAIL);
+  obj = cJSON_AddNumberToObject(root, "elevation", (double)angle->elevation);
+  CHECK_NULL_RETURN(obj, SL_STATUS_FAIL);
+  obj = cJSON_AddNumberToObject(root, "elevation_stdev", (double)angle->elevation_stdev);
+  CHECK_NULL_RETURN(obj, SL_STATUS_FAIL);
+  obj = cJSON_AddNumberToObject(root, "distance", (double)angle->distance);
+  CHECK_NULL_RETURN(obj, SL_STATUS_FAIL);
+  obj = cJSON_AddNumberToObject(root, "distance_stdev", (double)angle->distance_stdev);
+  CHECK_NULL_RETURN(obj, SL_STATUS_FAIL);
+  obj = cJSON_AddNumberToObject(root, "sequence", (int)angle->sequence);
+  CHECK_NULL_RETURN(obj, SL_STATUS_FAIL);
+  *str = cJSON_Print(root);
+  cJSON_Delete(root);
+  return SL_STATUS_OK;
+}
+
+/***************************************************************************//**
  * Serialize angle data structure into string.
  ******************************************************************************/
 sl_status_t aoa_serialize_angle(aoa_angle_t *angle, char **str)

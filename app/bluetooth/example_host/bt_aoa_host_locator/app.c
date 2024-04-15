@@ -254,7 +254,7 @@ void sl_bt_on_event(sl_bt_msg_t *evt)
       sc = aoa_angle_add_config(locator_id, &angle_config);
       app_assert_status(sc);
 
-      if (report_mode == ANGLE_REPORT) {
+      if ((report_mode == ANGLE_REPORT) || (report_mode == ANGLE_AND_IQ_REPORT)) {
         // Use random antenna switch pattern in angle reporting mode.
         sc = antenna_array_shuffle_pattern(&angle_config->antenna_array, rand);
         app_assert_status(sc);
@@ -450,13 +450,10 @@ void aoa_cte_on_iq_report(aoa_db_entry_t *tag, aoa_iq_report_t *iq_report)
   if (report_mode == IQ_REPORT) {
     size = sizeof(AOA_TOPIC_IQ_REPORT_PRINT);
     topic_template = AOA_TOPIC_IQ_REPORT_PRINT;
-
     // Compile payload
     sc = aoa_serialize_iq_report(iq_report, &payload);
-  } else {
-    size = sizeof(AOA_TOPIC_ANGLE_PRINT);
-    topic_template = AOA_TOPIC_ANGLE_PRINT;
-
+  } else  {
+    
     ec = aoa_calculate((aoa_state_t *)tag->user_data,
                        iq_report,
                        &angle,
@@ -473,8 +470,25 @@ void aoa_cte_on_iq_report(aoa_db_entry_t *tag, aoa_iq_report_t *iq_report)
     // Store the latest sequence number for the tag.
     tag->sequence = iq_report->event_counter;
 
-    // Compile payload
-    sc = aoa_serialize_angle(&angle, &payload);
+    
+
+    if (report_mode == ANGLE_REPORT)
+    {
+      size = sizeof(AOA_TOPIC_ANGLE_PRINT);
+      topic_template = AOA_TOPIC_ANGLE_PRINT;
+
+      // Compile payload
+      sc = aoa_serialize_angle(&angle, &payload);
+      
+    }
+    else if(report_mode == ANGLE_AND_IQ_REPORT)
+    {
+      size = sizeof(AOA_TOPIC_ANGLE_AND_IQ_REPORT_PRINT);
+      topic_template = AOA_TOPIC_ANGLE_AND_IQ_REPORT_PRINT;
+      
+      // Compile payload
+      sc = aoa_serialize_angle_and_iq(&angle,iq_report, &payload);
+    }
   }
   app_assert(sc == SL_STATUS_OK,
              "[E: 0x%04x] Failed to serialize the payload." APP_LOG_NL,

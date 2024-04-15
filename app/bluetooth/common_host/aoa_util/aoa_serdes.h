@@ -34,6 +34,17 @@
 #include "sl_status.h"
 #include "aoa_types.h"
 
+
+/***************************************************************************//**
+ * Serialize IQ report and angle data structure into string.
+ *
+ * @param[in] angle Angle data structure.
+ * @param[in] iq_report IQ report data structure. 
+ * @param[out] str Pointer to the string buffer, should be freed after use.
+ ******************************************************************************/
+sl_status_t aoa_serialize_angle_and_iq(aoa_angle_t *angle, aoa_iq_report_t *iq_report, char **str);
+
+
 /***************************************************************************//**
  * Serialize IQ report data structure into string.
  *
@@ -41,6 +52,7 @@
  * @param[out] str Pointer to the string buffer, should be freed after use.
  ******************************************************************************/
 sl_status_t aoa_serialize_iq_report(aoa_iq_report_t *iq_report, char **str);
+
 
 /***************************************************************************//**
  * Deserialize IQ report data structure from string.

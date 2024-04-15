@@ -31,14 +31,21 @@
 #ifndef AOA_TOPICS_H
 #define AOA_TOPICS_H
 
+#define AOA_TOPIC_ANGLE_AND_IQ_REPORT_PRINT    "silabs/aoa/angle_and_iq_report/%s/%s"
+#define AOA_TOPIC_ANGLE_AND_IQ_REPORT_SCAN     "silabs/aoa/angle_and_iq_report/%64[^/]/%64[^/]"
+
 #define AOA_TOPIC_IQ_REPORT_PRINT    "silabs/aoa/iq_report/%s/%s"
 #define AOA_TOPIC_IQ_REPORT_SCAN     "silabs/aoa/iq_report/%64[^/]/%64[^/]"
+
 #define AOA_TOPIC_ANGLE_PRINT        "silabs/aoa/angle/%s/%s"
 #define AOA_TOPIC_ANGLE_SCAN         "silabs/aoa/angle/%64[^/]/%64[^/]"
+
 #define AOA_TOPIC_POSITION_PRINT     "silabs/aoa/position/%s/%s"
 #define AOA_TOPIC_POSITION_SCAN      "silabs/aoa/position/%64[^/]/%64[^/]"
+
 #define AOA_TOPIC_CORRECTION_PRINT   "silabs/aoa/correction/%s/%s"
 #define AOA_TOPIC_CORRECTION_SCAN    "silabs/aoa/correction/%64[^/]/%64[^/]"
+
 #define AOA_TOPIC_CONFIG_PRINT       "silabs/aoa/config/%s"
 #define AOA_TOPIC_CONFIG_SCAN        "silabs/aoa/config/%64[^/]"
 #define AOA_TOPIC_CONFIG_BROADCAST   "silabs/aoa/config"
