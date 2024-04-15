@@ -1,0 +1,42 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(gdb) Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/exe/bt_aoa_host_locator",              
+            "args": [
+                "-u/dev/ttyACM0",
+                "-msigivest.eletrica.eng.br",
+                "-c${workspaceFolder}/config/locator_config.json"                
+            ],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+                {
+                    "description": "SIG34 handle",
+                    "text": "handle SIG34 nostop noprint pass noignore",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "run the makefile"
+        }
+    ]
+}
+
+
