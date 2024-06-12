@@ -31,6 +31,9 @@
 #ifndef AOA_TOPICS_H
 #define AOA_TOPICS_H
 
+#define PERIODIC_SYNC_TOPIC_PRINT    "silabs/data/periodic_sync_report/%s/%s"
+#define PERIODIC_SYNC_TOPIC_SCAN     "silabs/data/periodic_sync_report/%64[^/
+
 #define AOA_TOPIC_ANGLE_AND_IQ_REPORT_PRINT    "silabs/aoa/angle_and_iq_report/%s/%s"
 #define AOA_TOPIC_ANGLE_AND_IQ_REPORT_SCAN     "silabs/aoa/angle_and_iq_report/%64[^/]/%64[^/]"
 

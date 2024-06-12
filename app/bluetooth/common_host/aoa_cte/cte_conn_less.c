@@ -54,6 +54,7 @@ sl_status_t cte_bt_on_event_conn_less(sl_bt_msg_t *evt)
     // This event indicates the device has started and the radio is ready.
     // Do not call any stack command before receiving this boot event!
     case sl_bt_evt_system_boot_id:
+    {
       // Set scan mode, interval and scan window
       sc = sl_bt_scanner_set_parameters(AOA_CTE_SCAN_MODE,
                                         AOA_CTE_SCAN_INTERVAL,
@@ -66,7 +67,7 @@ sl_status_t cte_bt_on_event_conn_less(sl_bt_msg_t *evt)
       sc = sl_bt_scanner_start(sl_bt_scanner_scan_phy_1m,
                                sl_bt_scanner_discover_generic);
       break;
-
+    }
     // -------------------------------
     case sl_bt_evt_scanner_extended_advertisement_report_id:
     {
@@ -176,9 +177,30 @@ sl_status_t cte_bt_on_event_conn_less(sl_bt_msg_t *evt)
       iq_report.samples = (int8_t *)evt->data.evt_cte_receiver_connectionless_iq_report.samples.data;
 
       aoa_cte_on_iq_report(tag, &iq_report);
+      break;
     }
-    break;
-
+    case sl_bt_evt_periodic_sync_report_id:
+    {
+      if (evt->data.evt_periodic_sync_report.data.len > 0) {
+        // Check if asset tag is known.
+        if (aoa_db_get_tag_by_handle(evt->data.evt_periodic_sync_report.sync, &tag) == SL_STATUS_NOT_FOUND)
+        {
+          // Unknown tag, proceed with execution.
+          break;
+        }
+        app_log("periodic sync handle %d\r\n", evt->data.evt_periodic_sync_report.sync);
+        app_log("got following sync data: \r\n ");
+        for (int i = 0; i < evt->data.evt_periodic_sync_report.data.len; i++) {
+          app_log(" %02X", evt->data.evt_periodic_sync_report.data.data[i]);
+        } app_log("\r\n");
+        app_log("periodic sync RSSI %d and Tx power %d\r\n",
+                evt->data.evt_periodic_sync_report.rssi,
+                evt->data.evt_periodic_sync_report.tx_power);
+        app_log("periodic data status %d\r\n", evt->data.evt_periodic_sync_report.data_status);
+        periodic_sync_report_data_report(tag, evt);        
+      }
+      break;
+    }
     // -------------------------------
     // Default event handler.
     default:

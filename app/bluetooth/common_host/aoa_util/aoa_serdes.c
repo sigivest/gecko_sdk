@@ -31,6 +31,7 @@
 #include <stddef.h>
 #include "cJSON.h"
 #include "aoa_serdes.h"
+#include "b64.h"
 
 // Helper macro.
 #define CHECK_TYPE(x, t)  if (((x) == NULL) || ((x)->type != (t))) return SL_STATUS_FAIL
@@ -159,6 +160,33 @@ sl_status_t aoa_serialize_angle_and_iq(aoa_angle_t *angle, aoa_iq_report_t *iq_r
   CHECK_NULL_RETURN(obj, SL_STATUS_FAIL);
   obj = cJSON_AddNumberToObject(root, "sequence", (int)angle->sequence);
   CHECK_NULL_RETURN(obj, SL_STATUS_FAIL);
+  *str = cJSON_Print(root);
+  cJSON_Delete(root);
+  return SL_STATUS_OK;
+}
+
+/***************************************************************************//**
+ * Serialize data structure into string.
+ ******************************************************************************/
+sl_status_t periodic_sync_serialize_data(sl_bt_msg_t *evt, char **str)
+{
+  uint8_t *outStr;
+  cJSON *obj = NULL;
+  cJSON *root = cJSON_CreateObject();
+  cJSON *samples = cJSON_CreateArray();
+  CHECK_NULL_RETURN(samples, SL_STATUS_FAIL);
+  obj = cJSON_AddNumberToObject(root, "tx_power", (int8_t)evt->data.evt_periodic_sync_report.tx_power);
+  CHECK_NULL_RETURN(obj, SL_STATUS_FAIL);
+  obj = cJSON_AddNumberToObject(root, "rssi", (int8_t)evt->data.evt_periodic_sync_report.rssi);
+  CHECK_NULL_RETURN(obj, SL_STATUS_FAIL);
+  obj = cJSON_AddNumberToObject(root, "data_status", (uint8_t)evt->data.evt_periodic_sync_report.data_status);
+  CHECK_NULL_RETURN(obj, SL_STATUS_FAIL);
+  obj = cJSON_AddNumberToObject(root, "counter", (uint8_t)evt->data.evt_periodic_sync_report.counter);
+  CHECK_NULL_RETURN(obj, SL_STATUS_FAIL);
+  outStr = b64_encode(evt->data.evt_periodic_sync_report.data.data, evt->data.evt_periodic_sync_report.data.len);
+  obj = cJSON_AddStringToObject(root, "base64_data", outStr);
+  CHECK_NULL_RETURN(obj, SL_STATUS_FAIL);
+  free(outStr);
   *str = cJSON_Print(root);
   cJSON_Delete(root);
   return SL_STATUS_OK;

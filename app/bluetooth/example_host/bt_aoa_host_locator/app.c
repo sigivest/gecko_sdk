@@ -510,6 +510,41 @@ void aoa_cte_on_iq_report(aoa_db_entry_t *tag, aoa_iq_report_t *iq_report)
   free(topic);
 }
 
+
+
+/**************************************************************************//**
+ * Periodic sync data report callback.
+ *****************************************************************************/
+void periodic_sync_report_data_report(aoa_db_entry_t *tag, sl_bt_msg_t *evt)
+{
+  aoa_id_t tag_id;
+  sl_status_t sc;
+  char *payload;
+  char *topic_template;
+  char *topic;
+  size_t size;
+  enum sl_rtl_error_code ec;
+  aoa_angle_t angle;
+  periodic_sync_serialize_data(evt, &payload);
+  size = sizeof(PERIODIC_SYNC_TOPIC_PRINT);
+  topic_template = PERIODIC_SYNC_TOPIC_PRINT;
+  // Compile topic
+  size += (2 * sizeof(aoa_id_t));
+  topic = malloc(size);
+  app_assert(NULL != topic, "Failed to allocate memory for the MQTT topic.");
+  aoa_address_to_id(tag->address.addr, tag->address_type, tag_id);
+  snprintf(topic, size, topic_template, locator_id, tag_id);
+
+  // Send message
+  sc = mqtt_publish(&mqtt_handle, topic, payload, false);
+  app_assert_status(sc);
+
+  // Clean up
+  free(payload);
+  free(topic);
+  return;
+}
+
 /**************************************************************************//**
  * Get the board type of the NCP target
  *

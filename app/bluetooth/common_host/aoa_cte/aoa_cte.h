@@ -129,6 +129,14 @@ sl_status_t cte_bt_on_event_silabs(sl_bt_msg_t *evt);
  *****************************************************************************/
 void aoa_cte_on_iq_report(aoa_db_entry_t *tag,
                           aoa_iq_report_t *iq_report);
+/**************************************************************************//**
+ * Callback to notify the application on new periodic sync data report.
+ *
+ * @param[in] tag Pointer to the tag.
+ * @param[in] evt Bluetooth event
+ *****************************************************************************/
+void periodic_sync_report_data_report(aoa_db_entry_t *tag,
+                                  sl_bt_msg_t *evt);                          
 
 #ifdef __cplusplus
 };

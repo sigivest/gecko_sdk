@@ -33,7 +33,7 @@
 
 #include "sl_status.h"
 #include "aoa_types.h"
-
+#include "sl_bt_api.h"
 
 /***************************************************************************//**
  * Serialize IQ report and angle data structure into string.
@@ -44,6 +44,13 @@
  ******************************************************************************/
 sl_status_t aoa_serialize_angle_and_iq(aoa_angle_t *angle, aoa_iq_report_t *iq_report, char **str);
 
+/***************************************************************************//**
+ * Serialize data structure into string.
+ *
+ * @param[in] evt Bluetooth event.
+ * @param[out] str Pointer to the string buffer, should be freed after use.
+ ******************************************************************************/
+sl_status_t periodic_sync_serialize_data(sl_bt_msg_t *evt, char **str);
 
 /***************************************************************************//**
  * Serialize IQ report data structure into string.

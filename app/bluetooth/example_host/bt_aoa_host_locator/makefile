@@ -78,6 +78,9 @@ $(SDK_DIR)/app/bluetooth/common_host/aoa_util/aoa_util.c \
 $(SDK_DIR)/app/bluetooth/common_host/aoa_db/aoa_db.c \
 $(SDK_DIR)/app/bluetooth/common_host/system/system.c \
 app.c \
+buffer.c \
+encode.c \
+decode.c \
 main.c
 
 ifneq ($(MQTT_COMPONENT), 0)

@@ -118,3 +118,12 @@ SL_WEAK void aoa_cte_on_iq_report(aoa_db_entry_t *tag,
 {
   // Implement in the application.
 }
+
+/**************************************************************************//**
+ * Callback to notify the application on new periodic sync data report.
+ *****************************************************************************/
+SL_WEAK void periodic_sync_report_data_report(aoa_db_entry_t *tag,
+                                  sl_bt_msg_t *evt)
+{
+  // Implement in the application.
+}
