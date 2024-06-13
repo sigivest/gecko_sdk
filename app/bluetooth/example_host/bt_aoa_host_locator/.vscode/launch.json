@@ -7,8 +7,8 @@
             "request": "launch",
             "program": "${workspaceFolder}/exe/bt_aoa_host_locator",              
             "args": [
-                "-u/dev/ttyACM0",
-                "-msigivest.eletrica.eng.br",
+                "-u/dev/serial/by-id/usb-Silicon_Labs_J-Link_Pro_OB_000440294208-if00",
+                "-m103.0.1.31",
                 "-c${workspaceFolder}/config/locator_config.json"                
             ],
             "stopAtEntry": false,
