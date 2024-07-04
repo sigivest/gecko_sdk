@@ -536,7 +536,7 @@ static void parse_locator_config(void)
 static void locator_subscription(aoa_id_t loc_id, bool subscribe)
 {
   sl_status_t sc;
-  const char angle_topic_template[] = AOA_TOPIC_ANGLE_PRINT;
+  const char angle_topic_template[] = AOA_TOPIC_ANGLE_AND_IQ_REPORT_PRINT;
   char angle_topic[sizeof(angle_topic_template) + sizeof(aoa_id_t) + 1];
   snprintf(angle_topic, sizeof(angle_topic), angle_topic_template, loc_id, "+");
 

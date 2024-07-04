@@ -17,10 +17,14 @@ include $(SDK_DIR)/app/bluetooth/component_host/app_log.mk
 include $(SDK_DIR)/app/bluetooth/component_host/app_assert.mk
 include $(SDK_DIR)/app/bluetooth/component_host/app_signal.mk
 include $(SDK_DIR)/app/bluetooth/component_host/cjson.mk
+include $(SDK_DIR)/app/bluetooth/component_host/ncp_host_nothread.mk
+include $(SDK_DIR)/app/bluetooth/component_host/aoa_cte.mk
+include $(SDK_DIR)/app/bluetooth/component_host/aoa_angle.mk
 include $(SDK_DIR)/app/bluetooth/component_host/mqtt.mk
 include $(SDK_DIR)/app/bluetooth/component_host/rtl_lib.mk
-include $(SDK_DIR)/app/bluetooth/component_host/aoa_angle.mk
 include $(SDK_DIR)/app/bluetooth/component_host/antenna_array.mk
+
+
 
 ################################################################################
 # Include paths                                                                #
@@ -31,7 +35,11 @@ $(SDK_DIR)/app/bluetooth/common_host/aoa_parse \
 $(SDK_DIR)/app/bluetooth/common_host/aoa_util \
 $(SDK_DIR)/app/bluetooth/common_host/angle_queue \
 $(SDK_DIR)/app/bluetooth/common_host/aoa_loc \
-$(SDK_DIR)/platform/common/inc
+$(SDK_DIR)/app/bluetooth/common_host/aoa_db \
+$(SDK_DIR)/app/bluetooth/common_host/system \
+$(SDK_DIR)/app/bluetooth/common/ncp_user_cmd \
+$(SDK_DIR)/platform/common/inc \
+$(SDK_DIR)/protocol/bluetooth/inc
 
 
 ################################################################################
@@ -45,7 +53,12 @@ $(SDK_DIR)/app/bluetooth/common_host/aoa_util/aoa_serdes.c \
 $(SDK_DIR)/app/bluetooth/common_host/aoa_util/aoa_util.c \
 $(SDK_DIR)/app/bluetooth/common_host/angle_queue/angle_queue.c \
 $(SDK_DIR)/app/bluetooth/common_host/aoa_loc/aoa_loc.c \
+$(SDK_DIR)/app/bluetooth/common_host/aoa_db/aoa_db.c \
+$(SDK_DIR)/app/bluetooth/common_host/system/system.c \
 app.c \
+buffer.c \
+encode.c \
+decode.c \
 main.c
 
 ifeq ($(OS), win)
