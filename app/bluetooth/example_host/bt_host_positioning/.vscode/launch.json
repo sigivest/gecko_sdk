@@ -5,11 +5,10 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/exe/bt_aoa_host_locator",              
-            "args": [
-                "-u/dev/serial/by-id/usb-Silicon_Labs_J-Link_Pro_OB_000440294208-if00",
+            "program": "${workspaceFolder}/exe/bt_host_positioning",              
+            "args": [                
                 "-m103.0.1.31",
-                "-c${workspaceFolder}/config/locator_config.json"                
+                "-c${workspaceFolder}/config/positioning_config.json"
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",

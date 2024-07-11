@@ -619,7 +619,7 @@ static void on_message(mqtt_handle_t *handle,
     return;
   }
 
-  if (sscanf(topic, AOA_TOPIC_ANGLE_SCAN, loc_id, tag_id) == 2) {
+  if (sscanf(topic, AOA_TOPIC_ANGLE_AND_IQ_REPORT_SCAN, loc_id, tag_id) == 2) {
     on_locator_report(loc_id, tag_id, ANGLE_REPORT, payload);
     return;
   }

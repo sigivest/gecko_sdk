@@ -11,7 +11,7 @@ import random
 import sys
 import time
 
-from pyqtgraph.Qt import QtCore, QtGui
+from pyqtgraph.Qt import QtCore, QtGui, QtWidgets
 import pyqtgraph.opengl as gl
 import pyqtgraph as pg
 import numpy as np
@@ -37,7 +37,7 @@ MAX_NUM_TAG_LINES = 2       # if PLOT_DEBUG_LINES == 1, show lines to this many 
 MAX_NUM_LOCATOR_LINES = 5   # if PLOT_DEBUG_LINES == 1, show lines from this many locators
 
 DEFAULT_CONFIG = os.path.join(os.path.dirname(__file__), "../bt_host_positioning/config/positioning_config.json")
-DEFAULT_CONNECTION = {"host": "localhost", "port": 1883}
+DEFAULT_CONNECTION = {"host": "103.0.1.31", "port": 1883}
 
 pg.setConfigOptions(enableExperimental=True, useOpenGL=True)
 
@@ -87,7 +87,7 @@ class Visualizer(object):
     else:
       self.plotlines = 0
 
-    self.app = QtGui.QApplication(sys.argv)
+    self.app = QtWidgets.QApplication(sys.argv)
 
     self.w = None
     self.view = None
@@ -120,9 +120,12 @@ class Visualizer(object):
       self.w.addItem(axis)
 
       if PLOT_DEBUG_LOCATORS:
-        im = Image.open(r"img/locator.png")
+        scriptDir = os.path.dirname(__file__)
+        impath = os.path.join(scriptDir, 'img/locator.png')
+        im = Image.open(impath)
         self.img_tex_front = np.array(im)
-        imB = Image.open(r"img/locator_back.png")
+        impath = os.path.join(scriptDir, 'img/locator_back.png')
+        imB = Image.open(impath)
         self.img_tex_back = texB = np.array(imB)
         self.img_scale = 4000.0
 
@@ -144,7 +147,7 @@ class Visualizer(object):
 
   def start(self):
     if (sys.flags.interactive != 1) or not hasattr(QtCore, 'PYQT_VERSION'):
-        QtGui.QApplication.instance().exec_()
+        QtWidgets.QApplication.instance().exec_()
 
   def plot_room(self):
     # Only supported in 3D mode
