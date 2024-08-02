@@ -35,7 +35,7 @@
 #define AOA_CTE_DEFAULT_MODE    AOA_CTE_TYPE_SILABS
 
 // Scanner timing values in units of 0.625 ms
-#define AOA_CTE_SCAN_INTERVAL   160
+#define AOA_CTE_SCAN_INTERVAL   4
 #define AOA_CTE_SCAN_WINDOW     160
 
 // Scan mode
