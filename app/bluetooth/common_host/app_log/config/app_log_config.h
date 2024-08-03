@@ -82,7 +82,7 @@
 
 // <q APP_LOG_TIME_ENABLE> Timestamp
 // <i> Enables printing timestamp
-#define APP_LOG_TIME_ENABLE                     1
+#define APP_LOG_TIME_ENABLE                     0
 
 // <q APP_LOG_COUNTER_ENABLE> Counter
 // <i> Enables printing counter
@@ -114,7 +114,7 @@
 // <APP_LOG_LEVEL_ERROR=> ERROR
 // <APP_LOG_LEVEL_CRITICAL=> CRITICAL
 // <i> Default: INFO
-#define APP_LOG_LEVEL_FILTER_THRESHOLD              APP_LOG_LEVEL_DEBUG
+#define APP_LOG_LEVEL_FILTER_THRESHOLD              APP_LOG_LEVEL_INFO
 
 // </e>
 

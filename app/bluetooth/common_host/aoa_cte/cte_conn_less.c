@@ -100,15 +100,15 @@ sl_status_t cte_bt_on_event_conn_less(sl_bt_msg_t *evt)
                                    evt->data.evt_scanner_extended_advertisement_report.address_type,
                                    evt->data.evt_scanner_extended_advertisement_report.adv_sid,
                                    &sync_handle);
-      app_log("periodic sync interval: %d\r\n",
-                evt->data.evt_scanner_extended_advertisement_report.periodic_interval);
+      //app_log("periodic sync interval: %d\r\n",
+      //          evt->data.evt_scanner_extended_advertisement_report.periodic_interval);
       if (SL_STATUS_NO_MORE_RESOURCE == sc) {
         app_log_warning("SL_BT_CONFIG_MAX_PERIODIC_ADVERTISING_SYNC reached, stop scanning." APP_LOG_NL);
         sc = sl_bt_scanner_stop();
       }
       //sc = sl_bt_sync_scanner_set_sync_parameters (6, 60, 1);
-      app_log("set sync parameters result: 0x%X\r\n",
-                sc);
+      //app_log("set sync parameters result: 0x%X\r\n",
+      //          sc);
       break;
     }
 
@@ -132,14 +132,14 @@ sl_status_t cte_bt_on_event_conn_less(sl_bt_msg_t *evt)
                                                         aoa_cte_config.cte_count,
                                                         cte_switch_pattern_size,
                                                         cte_switch_pattern);
-      app_log("enable connectionless cte result: 0x%X\r\n",
-          sc);
+      //app_log("enable connectionless cte result: 0x%X\r\n",
+      //    sc);
       if (SL_STATUS_OK != sc) {
         break;
       }
-      sc = sl_bt_sync_update_sync_parameters(evt->data.evt_periodic_sync_opened.sync,6, 60);
-      app_log("update sync parameters result: 0x%X\r\n",
-          sc);      
+      sc = sl_bt_sync_update_sync_parameters(evt->data.evt_periodic_sync_opened.sync,12, 120);
+      //app_log("update sync parameters result: 0x%X\r\n",
+      //    sc);      
       size_t allowed_tags = aoa_db_allowlist_get_size();
       size_t connected_tags = aoa_db_get_number_of_tags();
       if ((allowed_tags > 0) && (connected_tags == allowed_tags)) {
