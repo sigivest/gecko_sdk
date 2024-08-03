@@ -94,7 +94,7 @@ sl_status_t cte_bt_on_event_conn_less(sl_bt_msg_t *evt)
         break;
       }
       sc = sl_bt_sync_scanner_set_sync_parameters (6, 60, 1);
-      sc = sl_bt_cte_receiver_set_sync_cte_type(16);
+      //sc = sl_bt_cte_receiver_set_sync_cte_type(16);
       // Establish synchronization with the advertising device.
       uint16_t sync_handle;
       sc = sl_bt_sync_scanner_open(evt->data.evt_scanner_extended_advertisement_report.address,
@@ -197,7 +197,6 @@ sl_status_t cte_bt_on_event_conn_less(sl_bt_msg_t *evt)
                 evt->data.evt_periodic_sync_report.rssi,
                 evt->data.evt_periodic_sync_report.tx_power);
         app_log("periodic data status %d\r\n", evt->data.evt_periodic_sync_report.data_status);
-        app_log("All allowed asset tags found, stop scanning." APP_LOG_NL);
         periodic_sync_report_data_report(tag, evt);        
       }
       break;
