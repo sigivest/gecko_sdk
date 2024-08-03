@@ -197,6 +197,7 @@ sl_status_t cte_bt_on_event_conn_less(sl_bt_msg_t *evt)
                 evt->data.evt_periodic_sync_report.rssi,
                 evt->data.evt_periodic_sync_report.tx_power);
         app_log("periodic data status %d\r\n", evt->data.evt_periodic_sync_report.data_status);
+        app_log_debug("All allowed asset tags found, stop scanning." APP_LOG_NL);
         periodic_sync_report_data_report(tag, evt);        
       }
       break;
