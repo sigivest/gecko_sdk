@@ -120,6 +120,8 @@ sl_status_t cte_bt_on_event_conn_less(sl_bt_msg_t *evt)
                           &evt->data.evt_periodic_sync_opened.address,
                           evt->data.evt_periodic_sync_opened.address_type,
                           &tag);
+      app_log("add tag result: 0x%X\r\n",
+                sc);
       if (SL_STATUS_OK != sc) {
         break;
       }
@@ -130,6 +132,8 @@ sl_status_t cte_bt_on_event_conn_less(sl_bt_msg_t *evt)
                                                         aoa_cte_config.cte_count,
                                                         cte_switch_pattern_size,
                                                         cte_switch_pattern);
+      app_log("enable connectionless cte result: 0x%X\r\n",
+          sc);
       if (SL_STATUS_OK != sc) {
         break;
       }
