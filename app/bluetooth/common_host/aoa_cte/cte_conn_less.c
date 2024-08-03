@@ -62,7 +62,6 @@ sl_status_t cte_bt_on_event_conn_less(sl_bt_msg_t *evt)
       if (SL_STATUS_OK != sc) {
         break;
       }
-
       // Start scanning on 1M PHY - looking for tags
       sc = sl_bt_scanner_start(sl_bt_scanner_scan_phy_1m,
                                sl_bt_scanner_discover_generic);
@@ -95,6 +94,7 @@ sl_status_t cte_bt_on_event_conn_less(sl_bt_msg_t *evt)
         break;
       }
       sc = sl_bt_sync_scanner_set_sync_parameters (2, 30, 1);
+      sc = sl_bt_cte_receiver_set_sync_cte_type(16);
       // Establish synchronization with the advertising device.
       uint16_t sync_handle;
       sc = sl_bt_sync_scanner_open(evt->data.evt_scanner_extended_advertisement_report.address,
