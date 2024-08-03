@@ -106,7 +106,7 @@ sl_status_t cte_bt_on_event_conn_less(sl_bt_msg_t *evt)
         app_log_warning("SL_BT_CONFIG_MAX_PERIODIC_ADVERTISING_SYNC reached, stop scanning." APP_LOG_NL);
         sc = sl_bt_scanner_stop();
       }
-      sc = sl_bt_sync_scanner_set_sync_parameters (6, 60, 1);
+      //sc = sl_bt_sync_scanner_set_sync_parameters (6, 60, 1);
       app_log("set sync parameters result: 0x%X\r\n",
                 sc);
       break;
@@ -137,7 +137,9 @@ sl_status_t cte_bt_on_event_conn_less(sl_bt_msg_t *evt)
       if (SL_STATUS_OK != sc) {
         break;
       }
-
+      sc = sl_bt_sync_update_sync_parameters(evt->data.evt_periodic_sync_opened.sync,6, 60);
+      app_log("update sync parameters result: 0x%X\r\n",
+          sc);      
       size_t allowed_tags = aoa_db_allowlist_get_size();
       size_t connected_tags = aoa_db_get_number_of_tags();
       if ((allowed_tags > 0) && (connected_tags == allowed_tags)) {
