@@ -94,7 +94,7 @@ sl_status_t cte_bt_on_event_conn_less(sl_bt_msg_t *evt)
                                          sizeof(cte_service))) {
         break;
       }
-
+      sc = sl_bt_sync_scanner_set_sync_parameters (2, 30, 1);
       // Establish synchronization with the advertising device.
       uint16_t sync_handle;
       sc = sl_bt_sync_scanner_open(evt->data.evt_scanner_extended_advertisement_report.address,
