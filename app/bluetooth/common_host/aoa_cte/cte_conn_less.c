@@ -93,7 +93,6 @@ sl_status_t cte_bt_on_event_conn_less(sl_bt_msg_t *evt)
                                          sizeof(cte_service))) {
         break;
       }
-      //sc = sl_bt_sync_scanner_set_sync_parameters (6, 60, 1);
       //sc = sl_bt_cte_receiver_set_sync_cte_type(16);
       // Establish synchronization with the advertising device.
       uint16_t sync_handle;
@@ -107,6 +106,9 @@ sl_status_t cte_bt_on_event_conn_less(sl_bt_msg_t *evt)
         app_log_warning("SL_BT_CONFIG_MAX_PERIODIC_ADVERTISING_SYNC reached, stop scanning." APP_LOG_NL);
         sc = sl_bt_scanner_stop();
       }
+      sc = sl_bt_sync_scanner_set_sync_parameters (6, 60, 1);
+      app_log("set sync parameters result: 0x%X\r\n",
+                sc);
       break;
     }
 
