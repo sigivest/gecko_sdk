@@ -101,6 +101,8 @@ sl_status_t cte_bt_on_event_conn_less(sl_bt_msg_t *evt)
                                    evt->data.evt_scanner_extended_advertisement_report.address_type,
                                    evt->data.evt_scanner_extended_advertisement_report.adv_sid,
                                    &sync_handle);
+      app_log("periodic sync interval: %d\r\n",
+                evt->data.evt_scanner_extended_advertisement_report.periodic_interval);
       if (SL_STATUS_NO_MORE_RESOURCE == sc) {
         app_log_warning("SL_BT_CONFIG_MAX_PERIODIC_ADVERTISING_SYNC reached, stop scanning." APP_LOG_NL);
         sc = sl_bt_scanner_stop();
