@@ -137,7 +137,7 @@ sl_status_t cte_bt_on_event_conn_less(sl_bt_msg_t *evt)
       if (SL_STATUS_OK != sc) {
         break;
       }
-      sc = sl_bt_sync_update_sync_parameters(evt->data.evt_periodic_sync_opened.sync,12, 120);
+      sc = sl_bt_sync_update_sync_parameters(evt->data.evt_periodic_sync_opened.sync,12, 1200);
       //app_log("update sync parameters result: 0x%X\r\n",
       //    sc);      
       size_t allowed_tags = aoa_db_allowlist_get_size();
