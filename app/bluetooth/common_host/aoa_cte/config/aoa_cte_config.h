@@ -36,7 +36,7 @@
 
 // Scanner timing values in units of 0.625 ms
 #define AOA_CTE_SCAN_INTERVAL   4
-#define AOA_CTE_SCAN_WINDOW     160
+#define AOA_CTE_SCAN_WINDOW     4
 
 // Scan mode
 #define AOA_CTE_SCAN_MODE       sl_bt_scanner_scan_mode_passive
