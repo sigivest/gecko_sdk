@@ -167,6 +167,8 @@ void app_init(int argc, char *argv[])
   unsigned int seed = time(NULL) + getpid();
   srand(seed);
 
+  app_log_info("NCP host initialised." APP_LOG_NL);
+
   // Initialize NCP connection.
   sc = ncp_host_init();
   if (sc == SL_STATUS_INVALID_PARAMETER) {
@@ -644,6 +646,10 @@ static void parse_config(const char *config)
       app_log_error("Failed to set report mode to %s" APP_LOG_NL, str_config);
     }
   }
+  else
+  {
+    app_log_error("Parsing config error (reportMode)");
+  }
 
   if (!antenna_switch_pattern_set && (report_mode_old != report_mode)) {
     antenna_array_reinit = true;
@@ -673,6 +679,11 @@ static void parse_config(const char *config)
       app_log_error("Failed to set antenna mode to %s" APP_LOG_NL, str_config);
     }
   }
+  else
+  {
+    app_log_error("Parsing config error (antennaMode)");
+  }
+
 
   // Check if antenna array type has changed.
   if (antenna_array_type != angle_config->antenna_array.array_type) {
@@ -699,6 +710,10 @@ static void parse_config(const char *config)
       }
     }
   }
+  else
+  {
+    app_log_info("Antenna reinit (false)");
+  }
 
   sc = aoa_parse_antenna_array(&antenna_switch_pattern,
                                &antenna_switch_pattern_size,
@@ -723,6 +738,10 @@ static void parse_config(const char *config)
     }
     free(antenna_switch_pattern);
   }
+  else
+  {
+    app_log_error("Parse fail (aoa_parse_antenna_array)");
+  }
 
   sc = aoa_parse_string_config(&str_config, "aoxMode", locator_id);
   if (sc == SL_STATUS_OK) {
@@ -733,6 +752,10 @@ static void parse_config(const char *config)
       app_log_error("Failed to set AoX mode to %s." APP_LOG_NL, str_config);
     }
   }
+  else
+  {
+    app_log_error("Parse fail (aoxMode)");
+  }
 
   sc = aoa_parse_bool_config(&angle_config->angle_filtering,
                              "angleFiltering",
@@ -741,6 +764,10 @@ static void parse_config(const char *config)
     app_log_info("Angle filtering set to: %s" APP_LOG_NL,
                  angle_config->angle_filtering ? "enabled" : "disabled");
   }
+  else
+  {
+    app_log_error("Parse fail (angle filter)");
+  }
 
   sc = aoa_parse_float_config(&angle_config->angle_filtering_weight,
                               "angleFilteringWeight",
@@ -748,6 +775,10 @@ static void parse_config(const char *config)
   if (sc == SL_STATUS_OK) {
     app_log_info("Angle filtering weight set to: %f" APP_LOG_NL,
                  angle_config->angle_filtering_weight);
+  }
+  else
+  {
+    app_log_error("Parse fail (filtering weight)");
   }
 
   sc = aoa_parse_uint16_config(&angle_config->angle_correction_timeout,
@@ -776,6 +807,11 @@ static void parse_config(const char *config)
       app_log_error("Failed to set CTE mode to %s" APP_LOG_NL, str_config);
     }
   }
+  else
+  {
+    app_log_error("Parse fail (cte mode)");
+  }
+
 
   sc = aoa_parse_uint16_config(&aoa_cte_config.cte_sampling_interval,
                                "cteSamplingInterval",
@@ -834,6 +870,12 @@ static void parse_config(const char *config)
       }
     } while (sc == SL_STATUS_OK);
   }
+  else
+  {
+    app_log_error("Parse fail (azimuth mask)");
+  }
+
+  
 
   if (SL_STATUS_OK == aoa_parse_check_config_exist("elevationMask", locator_id)) {
     aoa_angle_reset_elevation_masks(locator_id);
@@ -850,6 +892,11 @@ static void parse_config(const char *config)
       }
     } while (sc == SL_STATUS_OK);
   }
+  else
+  {
+    app_log_error("Parse fail (elevation mask)");
+  }
+
 
   sc = aoa_angle_finalize_config(locator_id);
   app_assert_status(sc);
