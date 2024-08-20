@@ -33,6 +33,8 @@
 #include "aoa_util.h"
 #include "aoa_cte_config.h"
 #include "app_log.h"
+#include <time.h>
+#include <sys/time.h>
 
 // Module shared variables.
 extern uint8_t cte_switch_pattern[ANTENNA_ARRAY_MAX_PIN_PATTERN_SIZE];
@@ -191,6 +193,11 @@ sl_status_t cte_bt_on_event_conn_less(sl_bt_msg_t *evt)
     }
     case sl_bt_evt_periodic_sync_report_id:
     {
+      struct timeval tv;
+      struct tm *tm_info;
+      char buffer[64];
+      char buffer2[64];
+
       if (evt->data.evt_periodic_sync_report.data.len > 0) {
         // Check if asset tag is known.
         if (aoa_db_get_tag_by_handle(evt->data.evt_periodic_sync_report.sync, &tag) == SL_STATUS_NOT_FOUND)
@@ -198,15 +205,29 @@ sl_status_t cte_bt_on_event_conn_less(sl_bt_msg_t *evt)
           // Unknown tag, proceed with execution.
           break;
         }
-        app_log("periodic sync handle %d\r\n", evt->data.evt_periodic_sync_report.sync);
-        app_log("got following sync data: \r\n ");
-        for (int i = 0; i < evt->data.evt_periodic_sync_report.data.len; i++) {
-          app_log(" %02X", evt->data.evt_periodic_sync_report.data.data[i]);
-        } app_log("\r\n");
-        app_log("periodic sync RSSI %d and Tx power %d\r\n",
-                evt->data.evt_periodic_sync_report.rssi,
-                evt->data.evt_periodic_sync_report.tx_power);
-        app_log("periodic data status %d\r\n", evt->data.evt_periodic_sync_report.data_status);
+
+        gettimeofday(&tv, NULL);
+
+        // Get the local time based on seconds
+        tm_info = gmtime(&tv.tv_sec);
+
+        // Format the time to include date and time up to seconds
+        strftime(buffer, 64, "timestamp\": \"%Y-%m-%dT%H:%M:%S", tm_info);
+
+        // Print the timestamp with microseconds and the "Z" suffix for UTC
+        sprintf(buffer2, "{\"%s.%06ldZ\"}\n", buffer, tv.tv_usec);
+        
+        app_log("INFO:bt_aoa_locator:{\"event\": \"periodic_sync_report: handle: %d, size:%d, rssi: %d, tx_power: %d, status: %d\", %s",evt->data.evt_periodic_sync_report.sync, evt->data.evt_periodic_sync_report.data.len,evt->data.evt_periodic_sync_report.rssi,evt->data.evt_periodic_sync_report.tx_power, evt->data.evt_periodic_sync_report.data_status, buffer2);
+        
+        //app_log("periodic sync handle %d\r\n", evt->data.evt_periodic_sync_report.sync);
+        //app_log("got following sync data: \r\n ");
+        //for (int i = 0; i < evt->data.evt_periodic_sync_report.data.len; i++) {
+        //app_log(" %02X", evt->data.evt_periodic_sync_report.data.data[i]);
+        //} app_log("\r\n");
+        //app_log("periodic sync RSSI %d and Tx power %d\r\n",
+        //        evt->data.evt_periodic_sync_report.rssi,
+        //        evt->data.evt_periodic_sync_report.tx_power);
+        //app_log("periodic data status %d\r\n", evt->data.evt_periodic_sync_report.data_status);
         periodic_sync_report_data_report(tag, evt);        
       }
       break;
