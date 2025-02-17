@@ -1,238 +1,400 @@
 {
-   "version": 1,
-   "id": "positioning-LabSC",
-   "estimationModeLocation": "SL_RTL_LOC_ESTIMATION_MODE_THREE_DIM_FAST_RESPONSE",
-   "validationModeLocation": "SL_RTL_LOC_MEASUREMENT_VALIDATION_MEDIUM",
-   "estimationIntervalSec": 0.02,
-   "locationFiltering": true,
-   "locationFilteringWeight": 0.1,
-   "numberOfSequenceIds": 6,
-   "maximumSequenceIdDiffs": 20,
-   "locators": [
-       {
-           "id": "ble-pd-0C4314F46CC2",
-           "config": {
-               "version": 1,
-               "aoxMode": "SL_RTL_AOA_MODE_REAL_TIME_FAST_RESPONSE",
-               "antennaMode": "SL_RTL_AOX_ARRAY_TYPE_4x4_DP_URA",
-               "antennaArray": [
-                   0,
-                   1,
-                   2,
-                   3,
-                   4,
-                   5,
-                   6,
-                   7,
-                   8,
-                   9,
-                   10,
-                   11,
-                   12,
-                   13,
-                   14,
-                   15
-               ],
-               "angleFiltering": true,
-               "angleFilteringWeight": 0.6,
-               "angleCorrectionTimeout": 5,
-               "angleCorrectionDelay": 3,
-               "cteMode": "CONN_LESS",
-               "cteSamplingInterval": 3,
-               "cteLength": 20,
-               "slotDuration": 1,
-               "reportMode": "ANGLE_AND_IQ_REPORT",
-               "allowList": [
-                  
-               ],
-               "azimuthMask": [
-                   {
-                       "min": -135,
-                       "max": 45
-                   }
-               ],
-               "elevationMask": [
-
-               ]
-           },
-           "coordinate": {
-               "x": -0.995,
-               "y": 7.825,
-               "z": 2.417
-           },
-           "orientation": {
-               "x": 180,
-               "y": 0,
-               "z": 0
-           }
-       },
-       {
-           "id": "ble-pd-0C4314F46B3F",
-           "config": {
-               "version": 1,
-               "aoxMode": "SL_RTL_AOA_MODE_REAL_TIME_FAST_RESPONSE",
-               "antennaMode": "SL_RTL_AOX_ARRAY_TYPE_4x4_DP_URA",
-               "antennaArray": [
-                   0,
-                   1,
-                   2,
-                   3,
-                   4,
-                   5,
-                   6,
-                   7,
-                   8,
-                   9,
-                   10,
-                   11,
-                   12,
-                   13,
-                   14,
-                   15
-               ],
-               "angleFiltering": true,
-               "angleFilteringWeight": 0.6,
-               "angleCorrectionTimeout": 5,
-               "angleCorrectionDelay": 3,
-               "cteMode": "CONN_LESS",
-               "cteSamplingInterval": 3,
-               "cteLength": 20,
-               "slotDuration": 1,
-               "reportMode": "ANGLE_AND_IQ_REPORT",
-               "allowList": [
-
-               ],
-               "azimuthMask": [
-                   {
-                       "min": -45,
-                       "max": 45
-                   }
-               ],
-               "elevationMask": [
-
-               ]
-           },
-           "coordinate": {
-               "x": -0.99,
-               "y": 1.206,
-               "z": 2.416
-           },
-           "orientation": {
-               "x": 180,
-               "y": 0,
-               "z": 0
-           }
-       },
-       {
-           "id": "ble-pd-0C4314F46B26",
-           "config": {
-               "version": 1,
-               "aoxMode": "SL_RTL_AOA_MODE_REAL_TIME_FAST_RESPONSE",
-               "antennaMode": "SL_RTL_AOX_ARRAY_TYPE_4x4_DP_URA",
-               "antennaArray": [
-                   0,
-                   1,
-                   2,
-                   3,
-                   4,
-                   5,
-                   6,
-                   7,
-                   8,
-                   9,
-                   10,
-                   11,
-                   12,
-                   13,
-                   14,
-                   15
-               ],
-               "angleFiltering": true,
-               "angleFilteringWeight": 0.6,
-               "angleCorrectionTimeout": 5,
-               "angleCorrectionDelay": 3,
-               "cteMode": "CONN_LESS",
-               "cteSamplingInterval": 3,
-               "cteLength": 20,
-               "slotDuration": 1,
-               "reportMode": "ANGLE_AND_IQ_REPORT",
-               "allowList": [
-
-               ],
-               "azimuthMask": [
-                   {
-                       "min": -135,
-                       "max": -45
-                   }
-               ],
-               "elevationMask": [
-
-               ]
-           },
-           "coordinate": {
-               "x": -5.717,
-               "y": 7.846,
-               "z": 2.41
-           },
-           "orientation": {
-               "x": 180,
-               "y": 0,
-               "z": 0
-           }
-       },
-       {
-           "id": "ble-pd-0C4314F469CC",
-           "config": {
-               "version": 1,
-               "aoxMode": "SL_RTL_AOA_MODE_REAL_TIME_FAST_RESPONSE",
-               "antennaMode": "SL_RTL_AOX_ARRAY_TYPE_4x4_DP_URA",
-               "antennaArray": [
-                   0,
-                   1,
-                   2,
-                   3,
-                   4,
-                   5,
-                   6,
-                   7,
-                   8,
-                   9,
-                   10,
-                   11,
-                   12,
-                   13,
-                   14,
-                   15
-               ],
-               "angleFiltering": true,
-               "angleFilteringWeight": 0.6,
-               "angleCorrectionTimeout": 5,
-               "angleCorrectionDelay": 3,
-               "cteMode": "CONN_LESS",
-               "cteSamplingInterval": 3,
-               "cteLength": 20,
-               "slotDuration": 1,
-               "reportMode": "ANGLE_AND_IQ_REPORT",
-               "allowList": [
-
-               ],
-               "azimuthMask": [
-
-               ],
-               "elevationMask": [
-
-               ]
-           },
-           "coordinate": {
-               "x": -3.524,
-               "y": 4.629,
-               "z": 2.416
-           },
-           "orientation": {
-               "x": 180,
-               "y": 0,
-               "z": 0
-           }
-       }
-   ]
-}
+    "version": 1,
+    "id": "positioning-LabSC",
+    "estimationModeLocation": "SL_RTL_LOC_ESTIMATION_MODE_THREE_DIM_FAST_RESPONSE",
+    "validationModeLocation": "SL_RTL_LOC_MEASUREMENT_VALIDATION_MEDIUM",
+    "estimationIntervalSec": 0.02,
+    "locationFiltering": true,
+    "locationFilteringWeight": 0.1,
+    "numberOfSequenceIds": 6,
+    "maximumSequenceIdDiffs": 20,
+    "locators": [
+        {
+            "id": "ble-pd-0C4314F46CC2",
+            "config": {
+                "version": 1,
+                "aoxMode": "SL_RTL_AOA_MODE_REAL_TIME_FAST_RESPONSE",
+                "antennaMode": "SL_RTL_AOX_ARRAY_TYPE_4x4_DP_URA",
+                "antennaArray": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15
+                ],
+                "angleFiltering": true,
+                "angleFilteringWeight": 0.6,
+                "angleCorrectionTimeout": 5,
+                "angleCorrectionDelay": 3,
+                "cteMode": "CONN_LESS",
+                "cteSamplingInterval": 3,
+                "cteLength": 20,
+                "slotDuration": 1,
+                "reportMode": "ANGLE_AND_IQ_REPORT",
+                "allowList": [
+                   
+                ],
+                "azimuthMask": [
+                    {
+                        "min": -135,
+                        "max": 45
+                    }
+                ],
+                "elevationMask": [
+ 
+                ]
+            },
+            "coordinate": {
+                "x": -1.0,
+                "y": 7.83,
+                "z": 2.422
+            },
+            "orientation": {
+                "x": 180,
+                "y": 0,
+                "z": 0
+            }
+        },
+        {
+            "id": "ble-pd-0C4314F46B3F",
+            "config": {
+                "version": 1,
+                "aoxMode": "SL_RTL_AOA_MODE_REAL_TIME_FAST_RESPONSE",
+                "antennaMode": "SL_RTL_AOX_ARRAY_TYPE_4x4_DP_URA",
+                "antennaArray": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15
+                ],
+                "angleFiltering": true,
+                "angleFilteringWeight": 0.6,
+                "angleCorrectionTimeout": 5,
+                "angleCorrectionDelay": 3,
+                "cteMode": "CONN_LESS",
+                "cteSamplingInterval": 3,
+                "cteLength": 20,
+                "slotDuration": 1,
+                "reportMode": "ANGLE_AND_IQ_REPORT",
+                "allowList": [
+ 
+                ],
+                "azimuthMask": [
+                    {
+                        "min": -45,
+                        "max": 45
+                    }
+                ],
+                "elevationMask": [
+ 
+                ]
+            },
+            "coordinate": {
+                "x": -0.96,
+                "y": 1.22,
+                "z": 2.416
+            },
+            "orientation": {
+                "x": 180,
+                "y": 0,
+                "z": 0
+            }
+        },
+        {
+            "id": "ble-pd-0C4314F46B26",
+            "config": {
+                "version": 1,
+                "aoxMode": "SL_RTL_AOA_MODE_REAL_TIME_FAST_RESPONSE",
+                "antennaMode": "SL_RTL_AOX_ARRAY_TYPE_4x4_DP_URA",
+                "antennaArray": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15
+                ],
+                "angleFiltering": true,
+                "angleFilteringWeight": 0.6,
+                "angleCorrectionTimeout": 5,
+                "angleCorrectionDelay": 3,
+                "cteMode": "CONN_LESS",
+                "cteSamplingInterval": 3,
+                "cteLength": 20,
+                "slotDuration": 1,
+                "reportMode": "ANGLE_AND_IQ_REPORT",
+                "allowList": [
+ 
+                ],
+                "azimuthMask": [
+                    {
+                        "min": -135,
+                        "max": -45
+                    }
+                ],
+                "elevationMask": [
+ 
+                ]
+            },
+            "coordinate": {
+                "x": -5.81,
+                "y": 7.85,
+                "z": 2.410
+            },
+            "orientation": {
+                "x": 180,
+                "y": 0,
+                "z": 0
+            }
+        },
+        {
+            "id": "ble-pd-0C4314F469CC",
+            "config": {
+                "version": 1,
+                "aoxMode": "SL_RTL_AOA_MODE_REAL_TIME_FAST_RESPONSE",
+                "antennaMode": "SL_RTL_AOX_ARRAY_TYPE_4x4_DP_URA",
+                "antennaArray": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15
+                ],
+                "angleFiltering": true,
+                "angleFilteringWeight": 0.6,
+                "angleCorrectionTimeout": 5,
+                "angleCorrectionDelay": 3,
+                "cteMode": "CONN_LESS",
+                "cteSamplingInterval": 3,
+                "cteLength": 20,
+                "slotDuration": 1,
+                "reportMode": "ANGLE_AND_IQ_REPORT",
+                "allowList": [
+ 
+                ],
+                "azimuthMask": [
+ 
+                ],
+                "elevationMask": [
+ 
+                ]
+            },
+            "coordinate": {
+                "x": -3.50,
+                "y": 4.60,
+                "z": 2.416
+            },
+            "orientation": {
+                "x": 180,
+                "y": 0,
+                "z": 0
+            }
+        },
+        {
+            "id": "ble-pd-C299A0EB1D6C",
+            "config": {
+                "version": 1,
+                "aoxMode": "SL_RTL_AOA_MODE_REAL_TIME_FAST_RESPONSE",
+                "antennaMode": "SL_RTL_AOX_ARRAY_TYPE_4x4_DP_URA",
+                "antennaArray": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15
+                ],
+                "angleFiltering": true,
+                "angleFilteringWeight": 0.6,
+                "angleCorrectionTimeout": 5,
+                "angleCorrectionDelay": 3,
+                "cteMode": "CONN_LESS",
+                "cteSamplingInterval": 3,
+                "cteLength": 20,
+                "slotDuration": 1,
+                "reportMode": "ANGLE_AND_IQ_REPORT",
+                "allowList": [
+ 
+                ],
+                "azimuthMask": [
+                    
+                ],
+                "elevationMask": [
+ 
+                ]
+            },
+            "coordinate": {
+                "x": -5.76,
+                "y": 4.64,
+                "z": 2.413
+            },
+            "orientation": {
+                "x": 180,
+                "y": 0,
+                "z": 0
+            }
+        },
+        {
+             "id": "ble-pd-639AA0EB1D6C",
+             "config": {
+                 "version": 1,
+                 "aoxMode": "SL_RTL_AOA_MODE_REAL_TIME_FAST_RESPONSE",
+                 "antennaMode": "SL_RTL_AOX_ARRAY_TYPE_4x4_DP_URA",
+                 "antennaArray": [
+                     0,
+                     1,
+                     2,
+                     3,
+                     4,
+                     5,
+                     6,
+                     7,
+                     8,
+                     9,
+                     10,
+                     11,
+                     12,
+                     13,
+                     14,
+                     15
+                 ],
+                 "angleFiltering": true,
+                 "angleFilteringWeight": 0.6,
+                 "angleCorrectionTimeout": 5,
+                 "angleCorrectionDelay": 3,
+                 "cteMode": "CONN_LESS",
+                 "cteSamplingInterval": 3,
+                 "cteLength": 20,
+                 "slotDuration": 1,
+                 "reportMode": "ANGLE_AND_IQ_REPORT",
+                 "allowList": [
+ 
+                 ],
+                 "azimuthMask": [
+                     
+                 ],
+                 "elevationMask": [
+ 
+                 ]
+             },
+             "coordinate": {
+                 "x": -0.98,
+                 "y": 4.54,
+                 "z": 2.448
+             },
+             "orientation": {
+                 "x": 180,
+                 "y": 0,
+                 "z": 0
+             }
+         },
+        {
+             "id": "ble-pd-D299A0EB1D6C",
+             "config": {
+                 "version": 1,
+                 "aoxMode": "SL_RTL_AOA_MODE_REAL_TIME_FAST_RESPONSE",
+                 "antennaMode": "SL_RTL_AOX_ARRAY_TYPE_4x4_DP_URA",
+                 "antennaArray": [
+                     0,
+                     1,
+                     2,
+                     3,
+                     4,
+                     5,
+                     6,
+                     7,
+                     8,
+                     9,
+                     10,
+                     11,
+                     12,
+                     13,
+                     14,
+                     15
+                 ],
+                 "angleFiltering": true,
+                 "angleFilteringWeight": 0.6,
+                 "angleCorrectionTimeout": 5,
+                 "angleCorrectionDelay": 3,
+                 "cteMode": "CONN_LESS",
+                 "cteSamplingInterval": 3,
+                 "cteLength": 20,
+                 "slotDuration": 1,
+                 "reportMode": "ANGLE_AND_IQ_REPORT",
+                 "allowList": [
+                 
+                 ],
+                 "azimuthMask": [
+                     
+                 ],
+                 "elevationMask": [
+ 
+                 ]
+             },
+             "coordinate": {
+                 "x": -5.85,
+                 "y": 1.21,
+                 "z": 2.417
+             },
+             "orientation": {
+                 "x": 180,
+                 "y": 0,
+                 "z": 0
+             }
+         }
+    ]
+ }
